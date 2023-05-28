@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 const ProjectsManagment = () => {
     return (
         <div className='py-10'>
-            <div className="container mx-auto md:px-40">
+            <div className="container mx-auto md:px-28">
                 <div className="grid grid-cols-10 gap-3">
                     <div className="col-span-3">
                         <Sidebar />
