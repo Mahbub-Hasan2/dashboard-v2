@@ -4,10 +4,12 @@ import HomePage from "../pages/HomePage";
 import ErrorPage from "../pages/ErrorPage";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import ProjectsManagment from "../pages/Dashboard/ProjectsManagment/ProjectsManagment";
-import AddProject from "../components/Dashboard/ProjectsManagments/AddProject";
-import SelectTemplate from "../components/Dashboard/ProjectsManagments/SelectTemplate";
-import AddDetails from "../components/Dashboard/ProjectsManagments/AddDetails";
-import Preview from "../components/Dashboard/ProjectsManagments/Preview";
+import AddProject from "../components/Dashboard/ProjectsManagments/AddProjects/AddProject";
+import SelectTemplate from "../components/Dashboard/ProjectsManagments/AddProjects/SelectTemplate";
+import AddDetails from "../components/Dashboard/ProjectsManagments/AddProjects/AddDetails";
+import Preview from "../components/Dashboard/ProjectsManagments/AddProjects/Preview";
+import Projects from "../components/Dashboard/ProjectsManagments/Projects/Projects";
+import AddProjectLayout from "../components/Dashboard/ProjectsManagments/AddProjects/AddProjectLayout";
 
 
 const router = createBrowserRouter([
@@ -29,24 +31,34 @@ const router = createBrowserRouter([
             element: <ProjectsManagment />,
             children: [
               {
-                path: "",
-                element: <AddProject/>,
+                path: "projects",
+                element: <Projects />,
               },
               {
-                path: "select-template",
-                element: <SelectTemplate />,
-              },
-              {
-                path: "add-details",
-                element: <AddDetails/>,
-              },
-              {
-                path: "preview",
-                element: <Preview/>,
-              },
-              {
-                path: "*",
-                element: <h1>Not Found</h1>,
+                path: "add-project",
+                element: <AddProjectLayout />,
+                children: [
+                  {
+                    path: "",
+                    element: <AddProject/>,
+                  },
+                  {
+                    path: "select-template",
+                    element: <SelectTemplate />,
+                  },
+                  {
+                    path: "add-details",
+                    element: <AddDetails/>,
+                  },
+                  {
+                    path: "preview",
+                    element: <Preview/>,
+                  },
+                  {
+                    path: "*",
+                    element: <h1>Not Found</h1>,
+                  }
+                ]
               }
             ]
           },

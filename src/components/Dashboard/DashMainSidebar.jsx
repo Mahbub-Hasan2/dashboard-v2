@@ -15,7 +15,7 @@ const dashPagesData = [
     { name: "Authorized", link: "authorized", icon: (<SiWebauthn className='text-2xl text-white font-bold' />) },
 ]
 
-const Sidebar = () => {
+const DashMainSidebar = () => {
     const [openSidebar, setOpenSidebar] = useState(false);
 
     return (
@@ -51,4 +51,4 @@ const Sidebar = () => {
     );
 };
 
-export default Sidebar;
+export default DashMainSidebar;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import templte1 from '../../../assets/images/templates/gallery-view.svg';
-import templte2 from '../../../assets/images/templates/case-study-view.svg';
-import templte3 from '../../../assets/images/templates/classic-view.svg';
+import templte1 from '../../../../assets/images/templates/gallery-view.svg';
+import templte2 from '../../../../assets/images/templates/case-study-view.svg';
+import templte3 from '../../../../assets/images/templates/classic-view.svg';
 
 const SelectTemplate = () => {
     return (

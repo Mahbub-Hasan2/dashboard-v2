@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaBeer } from 'react-icons/fa';
 import { IoCheckmarkDoneCircle } from 'react-icons/io5';
 import { AiTwotoneEdit } from 'react-icons/ai';
 import { CgTemplate } from 'react-icons/cg';
@@ -34,7 +33,7 @@ const tabs = [
     }
 ]
 
-const Sidebar = () => {
+const AddProjectSidebar = () => {
     return (
         <div>
             {tabs.map((tab) => (
@@ -55,4 +54,4 @@ const Sidebar = () => {
     );
 };
 
-export default Sidebar;
+export default AddProjectSidebar;

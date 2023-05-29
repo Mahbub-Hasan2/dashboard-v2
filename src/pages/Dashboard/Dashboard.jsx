@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Sidebar from '../../components/Dashboard/Sidebar';
+import DashMainSidebar from '../../components/Dashboard/DashMainSidebar';
 
 const Dashboard = () => {
 
@@ -10,7 +10,7 @@ const Dashboard = () => {
                 Munir Uddin Mahbub
             </div> */}
             <div className="flex gap-2">
-                <Sidebar/>
+                <DashMainSidebar/>
                 <div className="w-full p-2">
                     <Outlet/>
                 </div>

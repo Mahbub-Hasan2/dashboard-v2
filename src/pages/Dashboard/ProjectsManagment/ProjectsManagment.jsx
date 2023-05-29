@@ -1,19 +1,19 @@
 import React from 'react';
-import Sidebar from '../../../components/Dashboard/ProjectsManagments/Sidebar';
 import { Outlet } from 'react-router-dom';
+import ProjectsManagSidebar from '../../../components/Dashboard/ProjectsManagments/ProjectsManagSidebar';
 
 const ProjectsManagment = () => {
     return (
-        <div className='py-10'>
-            <div className="container mx-auto md:px-28">
-                <div className="grid grid-cols-10 gap-3">
-                    <div className="col-span-3">
-                        <Sidebar />
+        <div className='pb-10'>
+            <div className="">
+                {/* <div className="grid grid-cols-12 gap-3"> */}
+                    <div className="col-span-2">
+                        <ProjectsManagSidebar />
                     </div>
-                    <div className="col-span-7 border rounded-xl p-8">
+                    <div className="col-span-10 border rounded-xl p-8">
                         <Outlet />
                     </div>
-                </div>
+                {/* </div> */}
             </div>
         </div>
     );
