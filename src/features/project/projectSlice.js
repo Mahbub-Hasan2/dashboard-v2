@@ -2,7 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     fromData: {
-        skills: []
+        title: "",
+        completionDate: "",
+        templateType: "",
+        description: "",
+        fills: [],
+        video: "",
+        skills: [],
+        projectUrl: ""
     }
 }
 
