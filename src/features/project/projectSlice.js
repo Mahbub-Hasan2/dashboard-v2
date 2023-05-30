@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     fromData: {
         title: "",
-        completionDate: "",
+        date: "",
         templateType: "",
         description: "",
         fills: [],
@@ -17,6 +17,14 @@ const projectSlice = createSlice({
     name: "project",
     initialState,
     reducers: {
+        addProject: (state, action) => {
+            state.fromData.title = action.payload.title;
+            state.fromData.date = action.payload.date;
+        },
+        selectTemplate: (state, action) => {
+            state.fromData.templateType = action.payload.template;
+        },
+
         setSkill: (state, action) => {
             state.fromData.skills = [...state.fromData.skills, action.payload];
         },
@@ -40,4 +48,4 @@ const projectSlice = createSlice({
 });
 
 export default projectSlice.reducer;
-export const { setSkill, removeSkill, setDefaultSkill } = projectSlice.actions;
+export const { setSkill, removeSkill, setDefaultSkill, addProject, selectTemplate } = projectSlice.actions;

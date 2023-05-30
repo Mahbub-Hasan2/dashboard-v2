@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AddVideoLink from './AddVideoLink';
+import TextEditor from './TextEditor';
 
 const AddDetails = () => {
     return (
@@ -11,18 +12,15 @@ const AddDetails = () => {
                 <form action="" className="">
                     <div className="">
                         <label htmlFor="title" className="block mb-4 text-gray-700 text-sm font-medium">Project Description</label>
-                        <textarea className='border-2 border-gray-300 rounded-xl w-full' name="" id="" cols="30" rows="10" placeholder="Good descriptions include the following elements:
-                            1) Your client's goal for the project
-                            2) Details about your contribution to the project
-                            3) A summary of the project's success
-                            " ></textarea>
+
+                        <TextEditor />
                     </div>
                     <div className="mt-8 font-inter">
                         <label htmlFor="title" className="block mb-4 text-gray-700 text-sm font-medium">Project Files</label>
                         <div className="grid grid-cols-2 gap-8">
 
                             <div className="col-span-1 flex items-center justify-center">
-                                <label for="dropzone-file" className="flex flex-col items-center justify-center w-full h-20 border-2 border-primary border-dashed rounded cursor-pointer ">
+                                <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-20 border-2 border-primary border-dashed rounded cursor-pointer ">
                                     <div className="flex flex-col items-center justify-center pt-5 pb-5">
                                         <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">Drag and drop or<span className="font-semibold text-primary"> browse </span> files</p>
                                     </div>
