@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AddVideoLink from './AddVideoLink';
-import TextEditor from './TextEditor';
+import TextEditor from '../TextEditor';
+import ImageUpload from './ImageUpload';
+import PreviewImg from './PreviewImg';
 
 const AddDetails = () => {
     return (
@@ -17,22 +19,11 @@ const AddDetails = () => {
                     </div>
                     <div className="mt-8 font-inter">
                         <label htmlFor="title" className="block mb-4 text-gray-700 text-sm font-medium">Project Files</label>
+                        
+                        <PreviewImg/>
                         <div className="grid grid-cols-2 gap-8">
-
-                            <div className="col-span-1 flex items-center justify-center">
-                                <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-20 border-2 border-primary border-dashed rounded cursor-pointer ">
-                                    <div className="flex flex-col items-center justify-center pt-5 pb-5">
-                                        <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">Drag and drop or<span className="font-semibold text-primary"> browse </span> files</p>
-                                    </div>
-                                    <input id="dropzone-file" type="file" className="hidden" />
-                                </label>
-
-                            </div>
-                            <div className="col-span-1">
-                                <p className="text-sm">Or, embed a video from YouTube or Vimeo.</p>
-                                <AddVideoLink />
-                            </div>
-
+                            <ImageUpload />
+                            <AddVideoLink />
                         </div>
                     </div>
 

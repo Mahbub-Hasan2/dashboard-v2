@@ -6,7 +6,7 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import ProjectsManagment from "../pages/Dashboard/ProjectsManagment/ProjectsManagment";
 import AddProject from "../components/Dashboard/ProjectsManagments/AddProjects/AddProject";
 import SelectTemplate from "../components/Dashboard/ProjectsManagments/AddProjects/SelectTemplate";
-import AddDetails from "../components/Dashboard/ProjectsManagments/AddProjects/AddDetails";
+import AddDetails from "../components/Dashboard/ProjectsManagments/AddProjects/AddDetails/AddDetails";
 import Preview from "../components/Dashboard/ProjectsManagments/AddProjects/Preview";
 import Projects from "../components/Dashboard/ProjectsManagments/Projects/Projects";
 import AddProjectLayout from "../components/Dashboard/ProjectsManagments/AddProjects/AddProjectLayout";

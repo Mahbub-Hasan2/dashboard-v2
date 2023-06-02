@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
+import { setDescription } from '../../../../features/project/projectSlice';
+import { useDispatch } from 'react-redux';
 
 const TextEditor = () => {
+  const dispatch = useDispatch();
+
+
   const [text, setText] = useState('');
   const [lines, setLines] = useState([]);
   const [foldedLines, setFoldedLines] = useState([]);
@@ -13,6 +18,9 @@ const TextEditor = () => {
     // Split the sanitized text into lines, including empty lines
     const enteredLines = sanitizedText.split('\n');
     setLines(enteredLines);
+
+    
+    dispatch(setDescription(enteredLines))
   };
 
   const handleLineFold = (lineIndex) => {
