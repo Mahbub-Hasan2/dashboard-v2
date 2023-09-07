@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 const initialState = {
     fromData: sessionStorage.getItem("fromData") ? JSON.parse(sessionStorage.getItem("fromData")) : {
@@ -38,29 +39,35 @@ const projectSlice = createSlice({
         },
 
         setSkill: (state, action) => {
-            state.fromData.skills = [...state.fromData.skills, action.payload];
-            sessionStorage.setItem("fromData", JSON.stringify(state.fromData));
+            const newSkill = action.payload.toLowerCase();
+
+            // Check if the new skill already exists in the skills array
+            if (!state.fromData.skills.includes(newSkill)) {
+                state.fromData.skills = [...state.fromData.skills, newSkill];
+                sessionStorage.setItem("fromData", JSON.stringify(state.fromData));
+            }
+            else {
+                toast.warning("This skill already exists", {
+                    position: "bottom-right",
+                });
+            }
         },
         setDefaultSkill: (state, action) => {
             state.fromData.skills = action.payload;
             sessionStorage.setItem("fromData", JSON.stringify(state.fromData));
         },
         removeSkill: (state, action) => {
-            const position = action.payload;
-            const array = state.fromData.skills;
+            const skillToRemove = action.payload;
+            state.fromData.skills = state.fromData.skills.filter(skill => skill !== skillToRemove);
 
-            if (position >= 0 && position < array.length) {
-                for (let i = position; i < array.length - 1; i++) {
-                    array[i] = array[i + 1];
-                }
-                array.length--;
-            }
-            state.fromData.skills = array;
-
+            sessionStorage.setItem("fromData", JSON.stringify(state.fromData));
+        },
+        addProjectUrl: (state, action) => {
+            state.fromData.projectUrl = action.payload;
             sessionStorage.setItem("fromData", JSON.stringify(state.fromData));
         }
     }
 });
 
 export default projectSlice.reducer;
-export const { setSkill, removeSkill, setDefaultSkill, addProject, selectTemplate, setDescription, setPhotos } = projectSlice.actions;
+export const { setSkill, removeSkill, setDefaultSkill, addProject, selectTemplate, setDescription, setPhotos, addProjectUrl } = projectSlice.actions;

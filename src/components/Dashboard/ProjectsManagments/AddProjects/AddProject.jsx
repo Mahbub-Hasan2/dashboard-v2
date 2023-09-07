@@ -7,7 +7,6 @@ import { addProject } from '../../../../features/project/projectSlice';
 const AddProject = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         if(data.title){

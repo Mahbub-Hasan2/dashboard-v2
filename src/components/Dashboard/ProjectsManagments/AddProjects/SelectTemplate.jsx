@@ -79,7 +79,7 @@ const SelectTemplate = () => {
             </div>
 
             <div className="flex gap-5 font-poppins pt-5">
-                <Link to="/dashboard">
+                <Link to="/dashboard/add-project">
                     <button className="border-2 border-primary px-8 py-1.5 rounded-full">Back</button>
                 </Link>
                 <button onClick={onSubmit} className="bg-primary text-white px-8 py-1.5 rounded-full">Go to Add Details</button>

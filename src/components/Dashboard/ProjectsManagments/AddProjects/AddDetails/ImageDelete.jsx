@@ -1,26 +1,26 @@
 import React from 'react';
-import axios from 'axios';
-import cloudinary from '../../../../../configs/cloudinary.init';
 import { MdDeleteForever } from 'react-icons/md';
 
 const ImageDelete = ({ publicId }) => {
-  const { cloud_name, api_key, api_secret } = cloudinary.config();
+  const deleteImage = () => {
+    const cloudName = 'your_cloud_name';
+    const apiKey = 'your_api_key';
 
-  console.log(cloud_name, api_key, api_secret);
+    const url = `https://api.cloudinary.com/v1_1/${cloudName}/delete_by_token`;
 
-  const deleteImage = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.delete(`https://api.cloudinary.com/v1_1/${cloud_name}/image/destroy/${publicId}`, {
-        headers: {
-          'Authorization': `Bearer ${api_secret}`
-        }
-      });
-      console.log(response.data);
+    const script = document.createElement('script');
+    script.src = `${url}?public_id=${publicId}&api_key=${apiKey}&callback=deleteCallback`;
+    document.body.appendChild(script);
+
+    // Define the callback function to handle the response
+    window.deleteCallback = (response) => {
+      console.log(response);
       // Handle the response or display a success message
-    } catch (error) {
-      console.log("Something went wrong, please try again later.", error);
-    }
+      // Remove the callback function
+      delete window.deleteCallback;
+      // Remove the script tag
+      document.body.removeChild(script);
+    };
   };
 
   return (
@@ -33,3 +33,4 @@ const ImageDelete = ({ publicId }) => {
 };
 
 export default ImageDelete;
+

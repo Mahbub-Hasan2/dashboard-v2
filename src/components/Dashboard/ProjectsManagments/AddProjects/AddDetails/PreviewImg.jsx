@@ -4,7 +4,7 @@ import ImageDelete from './ImageDelete';
 
 const PreviewImg = () => {
     const {fromData} = useSelector(state => state.project);
-    console.log(fromData);
+    // console.log(fromData);
     return (
         <div className='grid grid-cols-2 gap-5 mb-5'>
             {fromData.photos.map((item, index) => (
