@@ -63,11 +63,25 @@ const projectSlice = createSlice({
             sessionStorage.setItem("fromData", JSON.stringify(state.fromData));
         },
         addProjectUrl: (state, action) => {
-            state.fromData.projectUrl = action.payload;
+            state.fromData.projectUrl = action.payload.projectUrl;
+            sessionStorage.setItem("fromData", JSON.stringify(state.fromData));
+        },
+        addVideo: (state, action) => {
+            state.fromData.video = action.payload;
             sessionStorage.setItem("fromData", JSON.stringify(state.fromData));
         }
     }
 });
 
 export default projectSlice.reducer;
-export const { setSkill, removeSkill, setDefaultSkill, addProject, selectTemplate, setDescription, setPhotos, addProjectUrl } = projectSlice.actions;
+export const {
+    setSkill,
+    removeSkill,
+    setDefaultSkill,
+    addProject,
+    selectTemplate,
+    setDescription,
+    setPhotos,
+    addProjectUrl,
+    addVideo
+} = projectSlice.actions;

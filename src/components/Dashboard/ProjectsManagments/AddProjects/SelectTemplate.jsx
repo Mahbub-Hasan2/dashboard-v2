@@ -22,8 +22,19 @@ const SelectTemplate = () => {
 
     const onSubmit = () => {
         if (selected) {
-            dispatch(selectTemplate({ template: selected }));
-            navigate("/dashboard/add-project/add-details");
+            if(selected === 'template1'){ 
+                dispatch(selectTemplate({ template: 'Gallery' }));
+                navigate("/dashboard/add-project/add-details");
+            }
+            else if(selected === 'template2'){
+                dispatch(selectTemplate({ template: 'Case Study' }));
+                navigate("/dashboard/add-project/add-details");
+            }
+            else if(selected === 'template3'){
+                dispatch(selectTemplate({ template: 'Classic' }));
+                navigate("/dashboard/add-project/add-details");
+            }
+            
         }
     };
 

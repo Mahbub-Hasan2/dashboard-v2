@@ -17,7 +17,7 @@ const AddDetails = () => {
     const onSubmit = data => {
         if (data.projectUrl) {
             dispatch(addProjectUrl(data));
-            navigate("preview");
+            navigate("/dashboard/add-project/preview");
         }
     };
 
