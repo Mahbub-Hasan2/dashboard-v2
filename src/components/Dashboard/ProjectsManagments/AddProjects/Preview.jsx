@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import EditeButton from '../../../UI/EditeButton';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useAddProjectMutation } from '../../../../features/api/apiSlice';
+import { toast } from 'react-toastify';
+import { resetProjectData } from '../../../../features/project/projectSlice';
 
 const Preview = () => {
 
     const { fromData } = useSelector(state => state.project);
 
+    const dispatch = useDispatch();
     const [foldedLines, setFoldedLines] = useState([]);
     const handleLineFold = (lineIndex) => {
         if (foldedLines.includes(lineIndex)) {
@@ -15,6 +19,34 @@ const Preview = () => {
             setFoldedLines([...foldedLines, lineIndex]);
         }
     };
+
+    const [addProject, { data: project, isError, isLoading, isSuccess }] = useAddProjectMutation();
+
+    const onSubmitProjectDataInDB = () => {
+        addProject({
+            title: fromData?.title,
+            description: fromData?.description,
+            skills: fromData?.skills,
+            video: fromData?.video,
+            photos: fromData?.photos,
+            photo: fromData?.photo,
+            date: fromData?.date,
+            projectUrl: fromData?.projectUrl,
+            templateType: fromData?.templateType,
+        })
+
+    }
+
+    useEffect(() => {
+        console.log(project, isError, isLoading, isSuccess)
+        if (isSuccess) {
+            toast.success('Project added successfully');
+            dispatch(resetProjectData()); // reset project data from redux store
+        }
+        else if (isError) {
+            toast.error('Something went wrong');
+        }
+    }, [isError, isSuccess]);
 
     return (
         <div className='font-poppins'>
@@ -65,9 +97,12 @@ const Preview = () => {
             </div>
 
             <div className="pt-7 relative">
-                <div className="">
-                    <iframe className='w-full h-96' src={fromData?.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-                </div>
+                {
+                    fromData?.video &&
+                    <div className="">
+                        <iframe className='w-full h-96' src={fromData?.video} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                    </div>
+                }
                 <div className="">
                     {
                         fromData?.photos.map((image, index) => (
@@ -106,8 +141,12 @@ const Preview = () => {
                 <Link to="/dashboard/add-project/add-details" >
                     <button className="border-2 border-primary px-8 py-1.5 rounded-full">Back</button>
                 </Link>
-                <button className="bg-primary text-white px-8 py-1.5 rounded-full">Publish</button>
-
+                {
+                    isLoading ?
+                        <button onClick={onSubmitProjectDataInDB} className="bg-primary text-white px-8 py-1.5 rounded-full">Publish</button>
+                        :
+                        <button onClick={onSubmitProjectDataInDB} className="bg-primary text-white px-8 py-1.5 rounded-full">Publish</button>
+                }
             </div>
         </div>
     );

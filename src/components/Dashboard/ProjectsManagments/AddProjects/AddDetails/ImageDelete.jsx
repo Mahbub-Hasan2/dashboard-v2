@@ -1,7 +1,16 @@
 import React from 'react';
 import { MdDeleteForever } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
+import { deleteOnePhoto } from '../../../../../features/project/projectSlice';
 
 const ImageDelete = ({ publicId }) => {
+  const dispatch = useDispatch();
+
+  const handleDeletePhoto = () => {
+    dispatch(deleteOnePhoto(publicId));
+  }
+
+
   const deleteImage = () => {
     const cloudName = 'your_cloud_name';
     const apiKey = 'your_api_key';
@@ -24,8 +33,8 @@ const ImageDelete = ({ publicId }) => {
   };
 
   return (
-    <div className='absolute top-0 right-0 p-3 group-hover:block hidden'>
-      <div onClick={deleteImage} className='bg-primary bg-opacity-10 p-2 rounded-full'>
+    <div  className='absolute top-0 right-0 p-3 group-hover:block hidden'>
+      <div onClick={handleDeletePhoto} className='bg-primary bg-opacity-10 p-2 rounded-full'>
         <MdDeleteForever className='text-2xl text-primary' />
       </div>
     </div>

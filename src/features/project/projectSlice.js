@@ -10,6 +10,7 @@ const initialState = {
         fills: [],
         video: "",
         photos: [],
+        photo: "",
         skills: [],
         projectUrl: ""
     }
@@ -69,13 +70,44 @@ const projectSlice = createSlice({
         addVideo: (state, action) => {
             state.fromData.video = action.payload;
             sessionStorage.setItem("fromData", JSON.stringify(state.fromData));
-        }
+        },
+        addPhoto: (state, action) => {
+
+            state.fromData.photo = action.payload.photo;
+
+            const photos = state.fromData.photos;
+            const arrayOfObjects = photos.map(photo => photo.public_id === action.payload.public_id ? { ...photo, selected: true } : { ...photo, selected: false });
+            state.fromData.photos = arrayOfObjects;
+
+            sessionStorage.setItem("fromData", JSON.stringify(state.fromData));
+        },
+        deleteOnePhoto: (state, action) => {
+            const public_id = action.payload;
+            state.fromData.photos = state.fromData.photos.filter(photo => photo.public_id !== public_id);
+            sessionStorage.setItem("fromData", JSON.stringify(state.fromData));
+        },
+        resetProjectData: (state) => {
+            state.fromData = {
+                title: "",
+                date: "",
+                templateType: "",
+                description: [],
+                fills: [],
+                video: "",
+                photos: [],
+                photo: "",
+                skills: [],
+                projectUrl: ""
+            }
+            sessionStorage.setItem("fromData", JSON.stringify(state.fromData));
+        },
     }
 });
 
 export default projectSlice.reducer;
 export const {
     setSkill,
+    deleteOnePhoto,
     removeSkill,
     setDefaultSkill,
     addProject,
@@ -83,5 +115,7 @@ export const {
     setDescription,
     setPhotos,
     addProjectUrl,
-    addVideo
+    addVideo,
+    addPhoto,
+    resetProjectData
 } = projectSlice.actions;
